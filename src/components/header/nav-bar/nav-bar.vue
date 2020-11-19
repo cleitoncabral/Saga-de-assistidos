@@ -28,7 +28,8 @@ export default {};
     background-color: #3cbd51 ;
 }
 .menu li a{
-    color: black;
+    font-family: 'Bree Serif', 'serif';
+    color: white;
     text-decoration: none;
 }
 </style>

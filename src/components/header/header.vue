@@ -1,7 +1,7 @@
 <template>
     <section class="header">
         <div class="logo">
-            <h2> Saga Assistidos</h2>
+            <h2 class="mr-3"> Saga Assistidos</h2>
         </div>
 
         <div>
@@ -29,7 +29,6 @@ export default {
     padding-top: 20px;
     padding-bottom: 20px;
     background-color: #408545;
-    font-family: 'VT323', monospace;
     justify-content: center;
 }
 .logo h2{
