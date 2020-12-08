@@ -1,7 +1,7 @@
 <template>
     <section class="header">
         <div class="logo">
-            <h2 class="mr-3"> Saga Assistidos</h2>
+            <h2 class="mr-3" flat to="/"> Saga Assistidos</h2>
         </div>
 
         <div>

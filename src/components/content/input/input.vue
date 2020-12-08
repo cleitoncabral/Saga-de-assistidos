@@ -17,17 +17,20 @@ components:{
 },
   data(){
     return{
-      search:'',
-      contentApi: ''
+      search:'', 
+      results:''
     }
   },
   methods:{
     searchContent(){
     const apiKey = 'c588fadd20c0db71341bc6404a868279'
-      Axios.get(`https://api.themoviedb.org/3/search/multi?api_key=${apiKey}&language=pt-br&query=${this.search}&page=1&include_adult=false`
-      ).then(resp => (
-        this.contentApi = resp.data
-      ))
+    // var contentJson
+      Axios.get(`https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&language=pt-br&query=${this.search}&page=1&include_adult=false`
+      ).then( resp =>{
+        this.results = resp.data.results
+        this.$emit('apiContent', this.results )
+      })
+      
     }
   }
 }

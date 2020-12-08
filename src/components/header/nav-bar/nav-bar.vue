@@ -1,8 +1,17 @@
 <template>
   <section class="menu">
     <ul>
-      <li> <a href="#">Buscar conteúdo</a></li>
-      <li > <a href="#">Conteúdos assistidos</a></li>
+      <li>
+        <router-link to="/BuscarConteudo">
+          <a>Buscar conteúdo</a>
+        </router-link>
+      </li>
+      
+      <li>
+        <router-link  to="/conteudoAssistido">
+          <a>Conteúdos assistidos</a>
+        </router-link>
+      </li>
     </ul>
   </section>
 </template>
