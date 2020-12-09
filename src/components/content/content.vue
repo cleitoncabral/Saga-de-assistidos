@@ -14,18 +14,48 @@
             </div>
             <div class="col-md-10">
               <h5 class="card-title">{{ result.title }}</h5>
-              <p class="mb-2" 
-              style="text-overflow: ellipsis; font-size: 15px">
+              <p class="mb-2" style="text-overflow: ellipsis; font-size: 15px">
                 {{ result.overview }}
               </p>
-              <b-button 
-              @click="verif(result)" 
-              v-b-modal.modal-center>Marcar como assistido</b-button>
+              <b-button
+                @click="verif(result)"
+                v-b-modal.modal-center
+                ref="btnShow"
+              >
+                Marcar como assistido</b-button
+              >
             </div>
           </div>
         </div>
       </div>
-      <b-modal id="modal-center" centered>{{}}</b-modal>
+      <b-modal ref="my-modal" hide-footer :title="order.title" id="modal-1">
+        <b-form>
+          <label class="mr-sm-2" for="inline-form-custom-select-pref"
+            >Indicar categoria:</label
+          >
+          <b-form-select
+            id="inline-form-custom-select-pref"
+            class="mb-2 mr-sm-2 mb-sm-0 mb-3"
+            :options="['Filme', 'Série de TV']"
+            :value="null"
+            v-model="contentType"
+          ></b-form-select>
+          <label for="rating-inline">Avaliar {{ contentType }}</label>
+          <b-form-rating
+            id="rating-inline"
+            value="0"
+            v-model="contentRate"
+            class="mb-3"
+          ></b-form-rating>
+          <b-form-textarea
+            :placeholder="coment"
+            rows="3"
+            max-rows="6"
+            class="mb-3"
+          ></b-form-textarea>
+        </b-form>
+        <b-button @click="sendResult">Salvar</b-button>
+      </b-modal>
     </div>
   </div>
   <!-- <b-card v-if="!apiData">
@@ -38,16 +68,23 @@
 <script>
 import Input from "./input/input.vue";
 export default {
-  components: { Input },     
+  components: { Input },
   data() {
     return {
-      results: ""
+      results: "",
+      coment: `Deixe um comentário...`,
+      contentRate: "",
+      contentType: " ",
+      order: "",
     };
   },
   methods: {
     verif(result) {
-      const order = result
-      console.log(order);
+      this.order = result;
+      this.$refs["my-modal"].show();
+    },
+    sendResult() {
+      this.$root.$emit("bv::hide::modal", "modal-1", "#btnShow");
     },
   },
 };
