@@ -39,6 +39,7 @@
             :options="['Filme', 'Série de TV']"
             :value="null"
             v-model="contentType"
+            required
           ></b-form-select>
           <label for="rating-inline">Avaliar {{ contentType }}</label>
           <b-form-rating
@@ -48,7 +49,8 @@
             class="mb-3"
           ></b-form-rating>
           <b-form-textarea
-            :placeholder="coment"
+          v-model="coment"
+            placeholder="Deixe um comentário"
             rows="3"
             max-rows="6"
             class="mb-3"
@@ -72,7 +74,7 @@ export default {
   data() {
     return {
       results: "",
-      coment: `Deixe um comentário...`,
+      coment: '',
       contentRate: "",
       contentType: " ",
       order: "",
@@ -85,6 +87,14 @@ export default {
     },
     sendResult() {
       this.$root.$emit("bv::hide::modal", "modal-1", "#btnShow");
+      const content = {
+        id: this.order.id,
+        type: this.contentType,
+        coment: this.coment,
+        rate: this.contentRate
+      }
+      console.log(content)
+      this.$store.state.contentWatched.push(content)
     },
   },
 };

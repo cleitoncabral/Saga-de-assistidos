@@ -2,7 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 
 import Content from './components/content/content.vue'
-import WatchedContent from './components/content/contentWatched.vue'
+import contentWatched from './components/content/contentWatched.vue'
 
 Vue.use(Router)
 
@@ -11,6 +11,6 @@ export default new Router({
     routes: [
         {path: '/', component: Content},
         {path: '/BuscarConteudo', component: Content},
-        {path: '/ConteudoAssistido', component: WatchedContent}
+        {path: '/ConteudoAssistido', component: contentWatched}
     ]
 })

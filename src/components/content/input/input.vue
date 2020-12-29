@@ -30,7 +30,7 @@ components:{
         this.results = resp.data.results
         this.$emit('apiContent', this.results )
       })
-      
+      console.log(this.results)
     }
   }
 }
