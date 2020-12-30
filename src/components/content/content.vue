@@ -3,7 +3,7 @@
     <Input @apiContent="results = $event" />
     <div class="cards">
       <div v-for="result in results" :key="result.id">
-        <div class="card mb-3">
+        <div class="card mb-3 p-3">
           <div class="row no-gutters">
             <div class="col-md-2">
               <img
@@ -21,8 +21,9 @@
                 @click="verif(result)"
                 v-b-modal.modal-center
                 ref="btnShow"
+               variant="success"
               >
-                Marcar como assistido</b-button
+                Adicionar aos Assistidos</b-button
               >
             </div>
           </div>
@@ -30,17 +31,6 @@
       </div>
       <b-modal ref="my-modal" hide-footer :title="order.title" id="modal-1">
         <b-form>
-          <label class="mr-sm-2" for="inline-form-custom-select-pref"
-            >Indicar categoria:</label
-          >
-          <b-form-select
-            id="inline-form-custom-select-pref"
-            class="mb-2 mr-sm-2 mb-sm-0 mb-3"
-            :options="['Filme', 'Série de TV']"
-            :value="null"
-            v-model="contentType"
-            required
-          ></b-form-select>
           <label for="rating-inline">Avaliar {{ contentType }}</label>
           <b-form-rating
             id="rating-inline"
@@ -56,7 +46,7 @@
             class="mb-3"
           ></b-form-textarea>
         </b-form>
-        <b-button @click="sendResult">Salvar</b-button>
+        <b-button @click="sendResult" variant="outline-success">Salvar</b-button>
       </b-modal>
     </div>
   </div>
@@ -76,8 +66,8 @@ export default {
       results: "",
       coment: '',
       contentRate: "",
-      contentType: " ",
       order: "",
+      sequencia: 0
     };
   },
   methods: {
@@ -88,13 +78,16 @@ export default {
     sendResult() {
       this.$root.$emit("bv::hide::modal", "modal-1", "#btnShow");
       const content = {
-        id: this.order.id,
-        type: this.contentType,
+        image: this.order.poster_path,
+        title: this.order.title,
+        id: this.sequencia,
         coment: this.coment,
         rate: this.contentRate
       }
-      console.log(content)
       this.$store.state.contentWatched.push(content)
+      this.sequencia++
+      this.coment = ''
+      this.contentRate = ''
     },
   },
 };
