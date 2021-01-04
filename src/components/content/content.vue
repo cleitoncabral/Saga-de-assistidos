@@ -31,7 +31,7 @@
       </div>
       <b-modal ref="my-modal" hide-footer :title="order.title" id="modal-1">
         <b-form>
-          <label for="rating-inline">Avaliar {{ contentType }}</label>
+          <label for="rating-inline">Avaliar</label>
           <b-form-rating
             id="rating-inline"
             value="0"

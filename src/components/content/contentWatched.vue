@@ -20,8 +20,9 @@
               <h5 class="card-title pr-2" style="display: inline">{{content.title}}</h5>
               <fa-icon :icon="['fas', 'trash-alt']" size="1x"
               class="trash-icon"
-              @click="deleteItem(content.id)"
+              @click="deleteItem(content)"
               ></fa-icon>
+              <button @click="deleteItem(content)">x</button>
               <p>Comentário: {{content.coment}}</p>
             </div>
           </div>
@@ -31,13 +32,15 @@
   </div>
 </template>
 
-<script>import { indexOf } from "core-js/fn/array"
-
-
+<script>
+import { mapActions } from 'vuex'
 export default {
     methods:{
-      deleteItem(content.id){
-        this.$store.state.contentWatched.splice(indexOf(content.id), 1)
+      ...mapActions({deleteItemAction: 'deleteItem'}),
+
+      deleteItem(content){
+        console.log(content.id)
+        this.deleteItemAction(content.id)
       }
     },
     computed:{
