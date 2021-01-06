@@ -31,15 +31,15 @@
   </div>
 </template>
 
-<script>import { indexOf } from "core-js/fn/array"
+<script>
 
 
 export default {
-    methods:{
-      deleteItem(content){
-        this.$store.state.contentWatched.splice(indexOf(content.id), 1)
-      }
-    },
+    // methods:{
+    //   deleteItem(content){
+    //     this.$store.state.contentWatched.splice(indexOf(content.id), 1)
+    //   }
+    // },
     computed:{
     contentWatched(){
       return this.$store.state.contentWatched

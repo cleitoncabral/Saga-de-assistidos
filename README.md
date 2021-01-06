@@ -1,4 +1,4 @@
-# saga-entretenimento
+# Saga Assistidos
 
 ## Project setup
 ```
