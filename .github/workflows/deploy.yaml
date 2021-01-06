@@ -1,5 +1,4 @@
-// .github/workflows/deploy.yaml
-name: deploy
+name: deploy-project
 
 on:
   push:
