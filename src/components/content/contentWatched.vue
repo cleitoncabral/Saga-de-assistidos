@@ -36,7 +36,7 @@
 
 export default {
     methods:{
-      deleteItem(content.id){
+      deleteItem(content){
         this.$store.state.contentWatched.splice(indexOf(content.id), 1)
       }
     },
