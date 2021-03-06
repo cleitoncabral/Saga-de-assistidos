@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <div class="cards">
-      <div v-for="content in contentWatched" :key="content.id">
+      <div v-for="content in contentWatched" :key="content.id" >
         <div class="card mb-3">
           <div class="row">
             <div class="col-md-1 pt-2 pl-4 pb-1">
@@ -35,11 +35,11 @@
 
 
 export default {
-    // methods:{
-    //   deleteItem(content){
-    //     this.$store.state.contentWatched.splice(indexOf(content.id), 1)
-    //   }
-    // },
+    methods:{
+      deleteItem(content){
+        this.$store.state.contentWatched.splice(this.$store.state.contentWatched.indexOf(content.id), 1)
+      }
+    },
     computed:{
     contentWatched(){
       return this.$store.state.contentWatched

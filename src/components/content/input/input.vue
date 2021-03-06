@@ -3,8 +3,8 @@
     <b-form-group class="input">
       <label for="" class="ml-3">O que já assisti?</label>
       <div class="col-12 form-inline">
-      <b-form-input v-model="search" placeholder="Procurar conteúdo" style="width:70%; outline:none"></b-form-input>
-        <b-button style="background-color:green" class="ml-3" type="submit" @click.enter="searchContent"><fa-icon :icon="['fas', 'arrow-right']" size="1x"  ></fa-icon></b-button>
+      <b-form-input v-model="search" placeholder="Procurar conteúdo" @keyup.enter="searchContent" style="width:70%; outline:none"></b-form-input>
+        <b-button style="background-color:green" class="ml-3" type="submit" @click="searchContent"><fa-icon :icon="['fas', 'arrow-right']" size="1x"  ></fa-icon></b-button>
       </div>
     </b-form-group>
   </section>
